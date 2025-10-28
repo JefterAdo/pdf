@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats Élection Présidentielle 2025 - Commission Électorale</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-vote-yea"></i>
+                    <h1><a href="https://lesnouvelles.info/" target="_blank" style="color: inherit; text-decoration: none;">Les Nouvelles</a></h1>
+                </div>
+                <div class="header-info">
+                    <span class="badge">Résultats Provisoires</span>
+                    <span class="date">Élection Présidentielle 2025</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Summary -->
+    <section class="dashboard">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #4CAF50;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-inscrits">8 568 456</h3>
+                        <p>Inscrits</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #2196F3;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-votants">4 292 474</h3>
+                        <p>Votants</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #FF9800;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="taux-participation">50,10%</h3>
+                        <p>Taux de Participation</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #9C27B0;">
+                        <i class="fas fa-box-ballot"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="suffrages-exprimes">4 187 318</h3>
+                        <p>Suffrages Exprimés</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Candidates Results -->
+    <section class="candidates-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i>
+                Résultats par Candidat
+            </h2>
+            <div class="candidates-grid" id="candidates-grid">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-header">
+                <h2 class="section-title">
+                    <i class="fas fa-search"></i>
+                    Recherche et Consultation des Résultats
+                </h2>
+            </div>
+            
+            <div class="search-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Rechercher une région, département, commune...">
+                    <button id="clear-search" class="clear-btn" title="Effacer">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="filter-group">
+                    <div class="filter-item">
+                        <label for="region-filter">
+                            <i class="fas fa-map-marked-alt"></i>
+                            Région
+                        </label>
+                        <select id="region-filter">
+                            <option value="">Toutes les régions</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-item">
+                        <label for="sort-filter">
+                            <i class="fas fa-sort"></i>
+                            Trier par
+                        </label>
+                        <select id="sort-filter">
+                            <option value="default">Par défaut</option>
+                            <option value="participation-desc">Participation (décroissant)</option>
+                            <option value="participation-asc">Participation (croissant)</option>
+                            <option value="votants-desc">Votants (décroissant)</option>
+                            <option value="votants-asc">Votants (croissant)</option>
+                        </select>
+                    </div>
+                    
+                    <button id="export-btn" class="export-btn">
+                        <i class="fas fa-download"></i>
+                        Exporter (CSV)
+                    </button>
+                </div>
+            </div>
+
+            <div class="results-info">
+                <span id="results-count">Affichage de tous les résultats</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Table -->
+    <section class="table-section">
+        <div class="container">
+            <div class="table-wrapper">
+                <table class="results-table" id="results-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="sticky-col">LOCALISATION</th>
+                            <th colspan="8">OÙ LE SCRUTIN A EU LIEU</th>
+                            <th colspan="5">CANDIDATS</th>
+                        </tr>
+                        <tr>
+                            <th>NB BV</th>
+                            <th>INSCRITS</th>
+                            <th>PERS. ASTREINTE</th>
+                            <th>VOTANTS</th>
+                            <th>TAUX PARTICIPATION</th>
+                            <th>BULLETINS NULS</th>
+                            <th>SUFFRAGES EXPRIMÉS</th>
+                            <th>BULLETINS BLANCS</th>
+                            <th class="candidate-col rhdp">RHDP<br><small>ALASSANE OUATTARA</small></th>
+                            <th class="candidate-col mgc">MGC<br><small>EHIVET SIMONE</small></th>
+                            <th class="candidate-col gp-paix">GP-PAIX<br><small>LAGOU ADJOUA</small></th>
+                            <th class="candidate-col code">CODE<br><small>BILLON JEAN-LOUIS</small></th>
+                            <th class="candidate-col independant">INDÉPENDANT<br><small>DON-MELLO SENIN</small></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                Visualisations Graphiques
+            </h2>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Répartition des Voix par Candidat</h3>
+                    <canvas id="candidatesChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Top 10 Régions - Taux de Participation</h3>
+                    <canvas id="participationChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>À propos</h4>
+                    <p>Plateforme interactive dédiée à la présentation des résultats provisoires de l'élection présidentielle 2025.</p>
+                    <p><strong>Une initiative de LesNouvelles.info</strong></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Angré Star 9B, Abidjan</p>
+                    <p style="padding-left: 1.5rem;">Côte d'Ivoire</p>
+                    <p><i class="fas fa-phone"></i> +225 0546 909642</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Informations</h4>
+                    <p><i class="fas fa-info-circle"></i> Résultats provisoires</p>
+                    <p><i class="fas fa-calendar"></i> Élection Présidentielle 2025</p>
+                    <p><i class="fas fa-globe"></i> LesNouvelles.info</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LesNouvelles.info. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
