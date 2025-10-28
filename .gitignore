@@ -14,3 +14,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Déploiement
+deploy-config.txt
+deploy_temp/

@@ -1,0 +1,19 @@
+# Configuration de déploiement Hostinger
+# Copiez ce fichier en deploy-config.txt et remplissez vos informations
+
+# Informations FTP
+FTP_HOST=ftp.votredomaine.com
+FTP_USER=votre_utilisateur_ftp
+FTP_PASS=votre_mot_de_passe
+FTP_PORT=21
+
+# Chemin distant
+REMOTE_DIR=/public_html/elections
+
+# Informations SSH (optionnel)
+SSH_HOST=votredomaine.com
+SSH_USER=votre_utilisateur_ssh
+SSH_PORT=22
+
+# URL du site
+SITE_URL=https://elections.votredomaine.com
