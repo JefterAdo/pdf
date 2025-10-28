@@ -666,6 +666,17 @@ body {
     gap: 0.5rem;
 }
 
+.footer-section a {
+    color: #667eea;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #f39c12;
+    text-decoration: underline;
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
